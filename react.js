@@ -19,6 +19,7 @@ function App() {
 
   const onSubmit = (data) => {
     if (!data.id) {
+      data.priority = 'normal';
       dispatch(addTodo(data));
     } else {
       dispatch(updateTodo(data));
@@ -36,12 +37,18 @@ function App() {
             <li>
               <Link to="/completed">Completed</Link>
             </li>
+            <li>
+              <Link to="/high-priority">High Priority</Link>
+            </li>
           </ul>
         </nav>
 
         <Switch>
           <Route path="/completed">
             <CompletedTodos todos={todos} />
+          </Route>
+          <Route path="/high-priority">
+            <HighPriorityTodos todos={todos} />
           </Route>
           <Route path="/">
             <TodoForm
@@ -59,3 +66,4 @@ function App() {
 }
 
 export default App;
+
